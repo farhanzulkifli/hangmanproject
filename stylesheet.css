@@ -1,0 +1,56 @@
+body {
+    display: block;
+    align-items: center;
+    justify-content: center;
+
+}
+#hangman{
+    height: 300px;
+}
+#wordcontainer{
+    display:flex;
+    justify-content: space-evenly;
+    background-color: greenyellow;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+#categorycontainer{
+    display:flex;
+    flex-wrap: wrap;
+    background-color:aqua;
+    height: 75px;
+    justify-content: space-evenly;
+}
+#hintcontainer{
+    display:flex;
+    flex-wrap: wrap;
+    background-color:aqua;
+    height: 75px;
+    justify-content: space-evenly;
+}
+.boxes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px;
+}
+.guessletters{
+    margin: 10px;
+}
+/* #categorydiv{
+    width: 35%;
+}
+#categoryans{
+    width: 64%;
+}
+#hintdiv{
+    width: 35%;
+}
+#hintans{
+    width: 64%
+} */
+li{
+    list-style:none;
+    margin: 5px;
+}
