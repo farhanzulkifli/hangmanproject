@@ -55,7 +55,7 @@ let hangmanscore = 0;
 const main = () => {
   // let gameswitch = true
   // if (gameswitch === true){
-
+  // game setup + game win
   //HTML Structure
 
   //Structuring the containers
@@ -87,6 +87,7 @@ const randomobject = allwords[Math.floor(Math.random()*allwords.length)]
   // Split the guess text
   const textsplit = randomobject.text.toUpperCase().split("");
   //putting the guess text in container
+  
   for (i = 0; i < textsplit.length; i++) {
     $("#wordcontainer").append(
       $("<div>")
@@ -146,6 +147,8 @@ const randomobject = allwords[Math.floor(Math.random()*allwords.length)]
 
   $(".guessletters").text("_");
   $(".-").text("-");
+  //if class is equal to space, the text will equal to space
+
 
   //putting the lives text
   $("#livescontainer").append(
@@ -184,13 +187,16 @@ const randomobject = allwords[Math.floor(Math.random()*allwords.length)]
       }, 200); //alert comes out
       $(".buttongang").off("click"); //turning off ALL buttons
     }
+    const check = $(".guessletters").text().includes("_")
+    if (check === false){
+      setTimeout(() => {
+       alert("HE'S ALIIIIIVEEEEEE");
+     }, 200)
+     $(".buttongang").off("click"); //turning off All buttons
+   }
   });
   console.log(randomobject.text)
-//   if (($(".guessletters").text) !== "_"){
-//     setTimeout(() => {
-//      alert("HE'S ALIIIIIVEEEEEE");
-//    }, 200)
-//    $(".buttongang").off("click"); //turning off All buttons
-//  }
+  
+  
 };
 $(main);
