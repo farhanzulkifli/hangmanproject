@@ -1,24 +1,42 @@
-// the data
-class Word {
-  //constructor made
-  constructor(text, Category, Hint) {
-    this.text = text;
-    this.Category = Category;
-    this.Hint = Hint;
-  }
-}
-const allwords = []; //function to make words and put them into an array
-const makefunc = (text, category, hint) => {
-  const wordmaker = new Word(text, category, hint);
-  allwords.push(wordmaker);
-};
-makefunc("Cambodia", "Country", "SEA"); //putting words into the array using the functions
-makefunc("Engl-nd", "Country", "Europe");
-makefunc("Ghana", "Country", "Africa");
-makefunc("David Liew", "Famous People", "Handsome man in class");
-makefunc("David Beck'ham", "Famous People", "Ex-Footballer");
-makefunc("Hermione/ Granger", "Famous People", "Harry Potter");
+const country = [
+  { text: "Cambodia", category: "Country", hint: "Southeast Asia" },
+  { text: "England", category: "Country", hint: "Europe" },
+  { text: "Ghana", category: "Country", hint: "Africa" },
+];
 
+const famousPeople = [
+  {
+    text: "Hermione Granger",
+    category: "Famous People",
+    hint: "Wingardium Levi'O'sa",
+  },
+  {
+    text: "Roger Federer",
+    category: "Famous People",
+    hint: "Possibly the best tennis player of all time",
+  },
+  {
+    text: "David Liew",
+    category: "Famous People",
+    hint: "Most handsome man in class",
+  },
+];
+const alcohol = [
+  {
+    text: "Soju Bomb",
+    category: "Alcohol",
+    hint: "You think it's a sweet drink... And then it hits you like a bloody train.",
+  },
+  { text: "Vesper Martini", category: "Alcohol", hint: "Double OO7" },
+  {
+    text: "Sangria",
+    category: "Alcohol",
+    hint: "Spanish/Portuguese delight, lots of fruits",
+  },
+];
+const useradded = [];
+
+const allwords = useradded.concat(alcohol, famousPeople, country);
 const alphabets = [
   "A",
   "B",
@@ -48,22 +66,27 @@ const alphabets = [
   "Z",
 ];
 
-  //Start Page
+//Start Page
 const start = () => {
   const body = $("body");
   body.append(
-    $("<div>").attr("class", "container").attr("id", "starttextdiv").text("HANG THE FARHAN")
+    $("<div>")
+      .attr("class", "container")
+      .attr("id", "starttextdiv")
+      .text("HANG THE MAN")
   );
   body.append(
     $("<div>").attr("class", "container").attr("id", "startbuttondiv")
   );
-  $("#startbuttondiv").append($("<button>").attr("id", "startbutton").text("LET'S HANG OUT"))
-  
+  $("#startbuttondiv").append(
+    $("<button>").attr("id", "startbutton").text("LET'S HANG OUT")
+  );
+
   $("#startbutton").on("click", () => {
     $("body").empty();
     $(main);
-  })
-}
+  });
+};
 
 //Game Score
 let hangmanscore = 0;
@@ -104,14 +127,11 @@ const main = () => {
     let textfill;
     if (textsplit[i] === " ") {
       textfill = "SPACE";
-    } 
-    else if (textsplit[i] === "'") {
+    } else if (textsplit[i] === "'") {
       textfill = "APOSTROPHE";
-    }
-    else if (textsplit[i] === "/") {
+    } else if (textsplit[i] === "/") {
       textfill = "SLASH";
-    }
-    else {
+    } else {
       textfill = textsplit[i];
     }
     $("#wordcontainer").append(
@@ -123,13 +143,23 @@ const main = () => {
   }
 
   //putting the hints and categories in container
-  $("#categorycontainer").append($("<div>").attr("class", "boxes").attr("id", "categorydiv").text("Category")
+  $("#categorycontainer").append(
+    $("<div>").attr("class", "boxes").attr("id", "categorydiv").text("Category")
   );
-  $("#categorycontainer").append($("<div>").attr("class", "boxes").attr("id", "categoryans").text(randomobject.Category)
+  $("#categorycontainer").append(
+    $("<div>")
+      .attr("class", "boxes")
+      .attr("id", "categoryans")
+      .text(randomobject.category)
   );
-  $("#hintcontainer").append($("<div>").attr("class", "boxes").attr("id", "hintdiv").text("Hint")
+  $("#hintcontainer").append(
+    $("<div>").attr("class", "boxes").attr("id", "hintdiv").text("Hint")
   );
-  $("#hintcontainer").append($("<div>").attr("class", "boxes").attr("id", "hintans").text(randomobject.Hint)
+  $("#hintcontainer").append(
+    $("<div>")
+      .attr("class", "boxes")
+      .attr("id", "hintans")
+      .text(randomobject.hint)
   );
 
   //putting the buttons into the container
@@ -143,7 +173,6 @@ const main = () => {
   }
   //putting hangman pictures into the container
   const pictures = [
-    "pics/startingpic.jpeg",
     "pics/floor.jpeg",
     "pics/pole1.jpeg",
     "pics/pole2.jpeg",
@@ -152,8 +181,30 @@ const main = () => {
     "pics/legs.jpeg",
     "pics/arms.jpeg",
   ];
+  const miscpictures = ["misc/startingpic.jpeg"];
+
+  const meme = [
+    "meme/baby.jpg",
+    "meme/coding.jpg",
+    "meme/doctor.jpg",
+    "meme/flert.jpg",
+    "meme/hammer.jpg",
+    "meme/maths.jpg",
+    "meme/popcorn.jpg",
+    "meme/predator.jpg",
+    "meme/scissors.jpg",
+    "meme/shoot.jpg",
+    "meme/smoke.jpg",
+    "meme/soju.jpg",
+    "meme/spies.jpg",
+    "meme/tattoo.jpg",
+    "meme/toilet.jpg",
+    "meme/watch.jpg",
+    "meme/xiaomi.jpg"
+  ];
+
   $("#hangmancontainer").append('<img id="hangman"/>');
-  $("#hangman").attr("src", pictures[0]);
+  $("#hangman").attr("src", miscpictures[0]);
 
   //turning letters into spaces( ),dashes(-) and underscores(_)
   $(".guessletters").text("_");
@@ -165,9 +216,9 @@ const main = () => {
 
   //putting the lives text
   $("#livescontainer").append(
-    "CAN'T TOUCH THIS BOIS." +
+    "WE OK BOISSSS." +
       " " +
-      (pictures.length - 1 - hangmanscore) +
+      (pictures.length - hangmanscore) +
       " more lives to go!"
   );
 
@@ -182,13 +233,13 @@ const main = () => {
       hangmanscore += 1; //hangman score goes up by 1
       $("#livescontainer").text(
         "YOU NOOB TRASH! " +
-          (pictures.length - 1 - hangmanscore) +
+          (pictures.length - hangmanscore) +
           " more lives to go!"
       ); //live texts change
-      $("#hangman").attr("src", pictures[hangmanscore]); //hangman will appear part by part
+      $("#hangman").attr("src", pictures[hangmanscore - 1]); //hangman will appear part by part
     }
     $(target).attr("disabled", true); //buttons that are clicked, can't be clicked again
-    if (hangmanscore === pictures.length - 1) {
+    if (hangmanscore === pictures.length) {
       //lose function,
       $("#livescontainer").text("HE'S DEAD YOU DODO"); // live text changes
       $(".buttongang").attr("disabled", true); //turning off ALL buttons
@@ -196,6 +247,8 @@ const main = () => {
     const check = $(".guessletters").text().includes("_"); //win condition
     if (check === false) {
       $("#livescontainer").text("HE'S ALIIIVEEE");
+      $("#hangmancontainer").append('<img id="winhangman"/>');
+      $("#hangman").attr("src", meme[Math.floor(Math.random() * meme.length)]);
       $(".buttongang").attr("disabled", true); //turning off All buttons
     }
   });
