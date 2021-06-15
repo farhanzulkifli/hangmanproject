@@ -7,6 +7,21 @@ body {
 #hangman{
     height: 300px;
 }
+#buttoncontainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#livescontainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#hangmancontainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 #wordcontainer{
     display:flex;
     justify-content: space-evenly;
@@ -19,24 +34,27 @@ body {
     display:flex;
     flex-wrap: wrap;
     background-color:aqua;
-    height: 75px;
+    height: 50px;
     justify-content: space-evenly;
 }
 #hintcontainer{
     display:flex;
     flex-wrap: wrap;
     background-color:aqua;
-    height: 75px;
+    height: 50px;
     justify-content: space-evenly;
 }
 .boxes{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 1px;
 }
 .guessletters{
     margin: 10px;
+}
+#livescontainer{
+    font-size: 50px;
+    margin:10px
 }
 /* #categorydiv{
     width: 35%;
