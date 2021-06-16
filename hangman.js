@@ -1,9 +1,9 @@
+//Game Data and words
 const country = [
   { text: "Cambodia", category: "Country", hint: "Southeast Asia" },
   { text: "England", category: "Country", hint: "Europe" },
   { text: "Ghana", category: "Country", hint: "Africa" },
 ];
-
 const famousPeople = [
   {
     text: "Hermione Granger",
@@ -35,7 +35,6 @@ const alcohol = [
   },
 ];
 const useradded = [];
-
 const allwords = useradded.concat(alcohol, famousPeople, country);
 const alphabets = [
   "A",
@@ -65,6 +64,9 @@ const alphabets = [
   "Y",
   "Z",
 ];
+//Game Score
+let hangmanscore = 0;
+let choice = 0
 
 //Start Page
 const start = () => {
@@ -84,12 +86,144 @@ const start = () => {
 
   $("#startbutton").on("click", () => {
     $("body").empty();
-    $(main);
+    $(categorypage);
   });
 };
+ // 2nd page
+const categorypage = () => {
+  const body = $("body");
+  body.append(
+    $("<div>")
+      .attr("class", "container")
+      .attr("id", "choosecatdiv")
+      .text("CHOOSE YOUR POISON")
+  );
+  body.append(
+    $("<div>").attr("class", "container").attr("id", "choicesdiv")
+  );
+  $("#choicesdiv").append(
+    $("<button>").attr("id", "allwordsbutton").text("All Words")
+  );
+  $("#allwordsbutton").on("click", () => {
+    $("body").empty();
+    $(main);
+    choice = allwords
+  });
+  $("#choicesdiv").append(
+    $("<button>").attr("id", "countrybutton").text("Countries")
+  );
+  $("#countrybutton").on("click", () => {
+    $("body").empty();
+    $(main);
+    choice = country
+  });
+  $("#choicesdiv").append(
+    $("<button>").attr("id", "peoplebutton").text("Famous People")
+  );
+  $("#peoplebutton").on("click", () => {
+    $("body").empty();
+    $(main);
+    choice = famousPeople
+  });
+  $("#choicesdiv").append(
+    $("<button>").attr("id", "alcoholbutton").text("Alcohol")
+  );
+  $("#alcoholbutton").on("click", () => {
+    $("body").empty();
+    $(main);
+    choice = alcohol
+  });
+  $("#choicesdiv").append(
+    $("<button>").attr("id", "useraddedbutton").text("User Added")
+  );
+  $("#useraddedbutton").on("click", () => {
+    if (useradded.length <= 0){
+    $("#useraddedsuccessfully").empty()
+    $("#useraddedsuccessfully").text("You swine! The 'User Added' library is empty. ADD SOMETHING MAYBE?? ")
+    }
+    else{
+    $("body").empty();
+    $(main);
+    choice = useradded
+    }
+  });
+  body.append(
+    $("<div>")
+      .attr("class", "container")
+      .attr("id", "addstuffdiv1")
+      .text("or perhaps... create your own?")
+  );
+  body.append(
+    $("<div>")
+      .attr("class", "container")
+      .attr("id", "addstuffdiv2")
+      .text("(stuff here will be added to 'User Added' Category)")
+  );
+  body.append(
+    $("<div>")
+      .attr("class", "container")
+      .attr("id", "submitstuff")
+  );
+  $("#submitstuff").append(
+    $("<input>")
+      .attr("class", "container")
+      .attr("class", "inputbox")
+      .attr("id", "textinput1")
+      .attr("placeholder", "your text little hoe")
+  );
+  $("#submitstuff").append(
+    $("<input>")
+      .attr("class", "container")
+      .attr("class", "inputbox")
+      .attr("id", "textinput2")
+      .attr("placeholder", "your category ma bro")
+  );
+  $("#submitstuff").append(
+    $("<input>")
+      .attr("class", "container")
+      .attr("class", "inputbox")
+      .attr("id", "textinput3")
+      .attr("placeholder", "your hint you sick troll")
+  );
+  $("#submitstuff").append(
+    $("<input/>")
+      .attr("type", 'submit')
+      .attr("id",'submitbutton')
+      .text('Hang!')
+  );
+  body.append(
+    $("<div>")
+      .attr("class", "container")
+      .attr("id", "useraddedsuccessfully")
+  );
 
-//Game Score
-let hangmanscore = 0;
+  $("#submitbutton").on("click", () => {
+
+    class Build {
+      constructor(text,category,hint){
+          this.text = text
+          this.category = category
+          this.hint = hint
+      }
+    }
+  const maker = new Build($("#textinput1").val(),$("#textinput2").val(),$("#textinput3").val())
+  
+  if ($("#textinput1").val() !== ""){
+    useradded.push(maker)
+    $("#useraddedsuccessfully").empty()
+    $("#useraddedsuccessfully").text("Hang Successful!")
+    $(".inputbox").val(null)
+    const hangsuccess = new Audio("sound/nice.mp3")
+    hangsuccess.play();
+  }
+    else{
+      $("#useraddedsuccessfully").empty()
+      $("#useraddedsuccessfully").text("You're obviously a disappointment. Type something in the text box, muggle.")
+      const hangfail = new Audio("sound/allahuakbar.mp3")
+      hangfail.play();
+    }
+  })
+}
 
 const main = () => {
   //Structuring the containers
@@ -118,7 +252,7 @@ const main = () => {
   );
   //Random word to be generated in
 
-  const randomobject = allwords[Math.floor(Math.random() * allwords.length)];
+  const randomobject = choice[Math.floor(Math.random() * choice.length)];
 
   // Split the guess text
   const textsplit = randomobject.text.toUpperCase().split("");
@@ -131,6 +265,8 @@ const main = () => {
       textfill = "APOSTROPHE";
     } else if (textsplit[i] === "/") {
       textfill = "SLASH";
+    } else if (textsplit[i] === "?") {
+      textfill = "QMARK";
     } else {
       textfill = textsplit[i];
     }
@@ -212,7 +348,7 @@ const main = () => {
   $(".-").text("-");
   $(".APOSTROPHE").text("'");
   $(".SLASH").text("/");
-  // $(".'").text("'");
+  $(".QMARK").text("?");
 
   //putting the lives text
   $("#livescontainer").append(
@@ -243,22 +379,33 @@ const main = () => {
       //lose function,
       $("#livescontainer").text("HE'S DEAD YOU DODO"); // live text changes
       $(".buttongang").attr("disabled", true); //turning off ALL buttons
+      const lose = new Audio("sound/nani.mp3")
+      lose.play();
     }
     const check = $(".guessletters").text().includes("_"); //win condition
     if (check === false) {
       $("#livescontainer").text("HE'S ALIIIVEEE");
       $("#hangmancontainer").append('<img id="winhangman"/>');
       $("#hangman").attr("src", meme[Math.floor(Math.random() * meme.length)]);
+      const victory = new Audio("sound/FF7victory.mp3")
+      setTimeout(() => {
+        victory.play();
+        setTimeout(() => {
+            victory.pause();
+            victory.currentTime = 0;
+        }, 5000);
+    }, 0);
       $(".buttongang").attr("disabled", true); //turning off All buttons
     }
   });
-  console.log(randomobject.text);
   $("#restartcontainer").append(
     $("<button>").attr("id", "mainmenu").text("Main Menu")
   );
   $("#mainmenu").on("click", () => {
     $("body").empty(); //clearing the body
     $(start);
+    hangmanscore = 0; //reset hangman score
+    choice = 0
   });
   $("#restartcontainer").append(
     $("<button>").attr("id", "restartbutton").text("Hang Again")
@@ -268,5 +415,6 @@ const main = () => {
     hangmanscore = 0; //reset hangman score
     $(main);
   });
+  console.log(randomobject.text)
 };
 $(start);
