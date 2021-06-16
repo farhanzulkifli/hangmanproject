@@ -75,15 +75,14 @@ const start = () => {
     $("<div>")
       .attr("class", "container")
       .attr("id", "starttextdiv")
-      .text("HANG THE MAN")
+      .text("Hey")
   );
   body.append(
     $("<div>").attr("class", "container").attr("id", "startbuttondiv")
   );
   $("#startbuttondiv").append(
-    $("<button>").attr("id", "startbutton").text("LET'S HANG OUT")
+    $("<button>").attr("id", "startbutton").text("Let's Hang").addClass("custom-btn")
   );
-
   $("#startbutton").on("click", () => {
     $("body").empty();
     $(categorypage);
@@ -96,13 +95,13 @@ const categorypage = () => {
     $("<div>")
       .attr("class", "container")
       .attr("id", "choosecatdiv")
-      .text("CHOOSE YOUR POISON")
+      .text("Choose your poison")
   );
   body.append(
     $("<div>").attr("class", "container").attr("id", "choicesdiv")
   );
   $("#choicesdiv").append(
-    $("<button>").attr("id", "allwordsbutton").text("All Words")
+    $("<button>").attr("id", "allwordsbutton").text("All words").addClass("custom-btn")
   );
   $("#allwordsbutton").on("click", () => {
     $("body").empty();
@@ -110,7 +109,7 @@ const categorypage = () => {
     choice = allwords
   });
   $("#choicesdiv").append(
-    $("<button>").attr("id", "countrybutton").text("Countries")
+    $("<button>").attr("id", "countrybutton").text("Countries").addClass("custom-btn")
   );
   $("#countrybutton").on("click", () => {
     $("body").empty();
@@ -118,7 +117,7 @@ const categorypage = () => {
     choice = country
   });
   $("#choicesdiv").append(
-    $("<button>").attr("id", "peoplebutton").text("Famous People")
+    $("<button>").attr("id", "peoplebutton").text("Famous People").addClass("custom-btn")
   );
   $("#peoplebutton").on("click", () => {
     $("body").empty();
@@ -126,7 +125,7 @@ const categorypage = () => {
     choice = famousPeople
   });
   $("#choicesdiv").append(
-    $("<button>").attr("id", "alcoholbutton").text("Alcohol")
+    $("<button>").attr("id", "alcoholbutton").text("Alcohol").addClass("custom-btn")
   );
   $("#alcoholbutton").on("click", () => {
     $("body").empty();
@@ -134,7 +133,7 @@ const categorypage = () => {
     choice = alcohol
   });
   $("#choicesdiv").append(
-    $("<button>").attr("id", "useraddedbutton").text("User Added")
+    $("<button>").attr("id", "useraddedbutton").text("User Added").addClass("custom-btn")
   );
   $("#useraddedbutton").on("click", () => {
     if (useradded.length <= 0){
@@ -399,7 +398,7 @@ const main = () => {
     }
   });
   $("#restartcontainer").append(
-    $("<button>").attr("id", "mainmenu").text("Main Menu")
+    $("<button>").attr("id", "mainmenu").text("Main Menu").addClass("custom-btn")
   );
   $("#mainmenu").on("click", () => {
     $("body").empty(); //clearing the body
@@ -408,7 +407,7 @@ const main = () => {
     choice = 0
   });
   $("#restartcontainer").append(
-    $("<button>").attr("id", "restartbutton").text("Hang Again")
+    $("<button>").attr("id", "restartbutton").text("Hang Again").addClass("custom-btn")
   ); //making the reset button
   $("#restartbutton").on("click", () => {
     $("body").empty(); //clearing the body
