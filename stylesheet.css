@@ -47,7 +47,7 @@ body {
     border: 2px solid #000;
     font-family: "Andale Mono",monospace;
     /* font-weight: 500; */
-    background: transparent;
+    background: white;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -81,6 +81,7 @@ body {
      border-left-color: transparent;
      border-bottom-color: #000;
      border-right-color: #000;
+     background-color: blue;
   }
   .custom-btn:hover:before,
   .custom-btn:hover:after {
