@@ -244,6 +244,9 @@ const main = () => {
     $("<div>").attr("class", "container").attr("id", "livescontainer")
   );
   body.append(
+    $("<div>").attr("class", "container").attr("id", "timercontainer")
+  );
+  body.append(
     $("<div>").attr("class", "container").attr("id", "hangmancontainer")
   );
   body.append(
@@ -414,6 +417,15 @@ const main = () => {
     hangmanscore = 0; //reset hangman score
     $(main);
   });
+let counter = 31;
+const interval = setInterval(() => {
+    counter--;
+    $("#timercontainer").append(counter)// Display 'counter' wherever you want to display it.
+    if (counter === 0) {
+        alert("counter")
+        clearInterval(interval);
+    }
+}, counter*100);
   console.log(randomobject.text)
 };
 $(start);

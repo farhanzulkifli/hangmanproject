@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
 body {
   max-width: 1000px;
-  background-color: #e0e5ec;
+  background-color: #41b3a3;
 
   /* background: rgb(58, 56, 56); */
 }
@@ -13,12 +13,12 @@ body {
 }
 
 #choosecatdiv{
-    color: #353535;
+    color: #85dcb8;
     font-size: 50px;
     font-family: "Cormorant Garamond";
 }
 #addstuffdiv1{
-    color: #353535;
+    color: #85dcb8;
     font-size: 20px;
     font-family: "Cormorant Garamond";
 }
