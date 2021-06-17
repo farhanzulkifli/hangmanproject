@@ -138,7 +138,7 @@ const categorypage = () => {
   $("#useraddedbutton").on("click", () => {
     if (useradded.length <= 0){
     $("#useraddedsuccessfully").empty()
-    $("#useraddedsuccessfully").text("You swine! The 'User Added' library is empty. ADD SOMETHING MAYBE?? ")
+    $("#useraddedsuccessfully").text("You swine! The 'User Added' library is empty, add something. ")
     }
     else{
     $("body").empty();
@@ -217,7 +217,7 @@ const categorypage = () => {
   }
     else{
       $("#useraddedsuccessfully").empty()
-      $("#useraddedsuccessfully").text("You're obviously a disappointment. Type something in the text box, muggle.")
+      $("#useraddedsuccessfully").text("You're obviously a disappointment. Type something in the text box.")
       const hangfail = new Audio("sound/allahuakbar.mp3")
       hangfail.play();
     }
@@ -244,8 +244,11 @@ const main = () => {
     $("<div>").attr("class", "container").attr("id", "livescontainer")
   );
   body.append(
-    $("<div>").attr("class", "container").attr("id", "timercontainer")
+    $("<div>").attr("class", "container").attr("id", "progressbarcontainer")
   );
+  // body.append(
+  //   $("<div>").attr("class", "container").attr("id", "timercontainer") = Turn this on if numerical timer needed
+  // );
   body.append(
     $("<div>").attr("class", "container").attr("id", "hangmancontainer")
   );
@@ -299,6 +302,10 @@ const main = () => {
       .attr("id", "hintans")
       .text(randomobject.hint)
   );
+
+  //Timer CSS
+  $("#progressbarcontainer").append($("<div>").addClass("progress"))
+  $(".progress").append($("<div>").addClass("color"))
 
   //putting the buttons into the container
   for (i = 0; i < alphabets.length; i++) {
@@ -360,7 +367,22 @@ const main = () => {
       " more lives to go!"
   );
 
-  //onclick button
+  // let counter = 20; //turn this on in the body append section
+  // const interval = setInterval(() => {
+  //   if (counter <= 0) {
+  //     alert("counter")
+  //     clearInterval(interval);
+  //   }
+  //   $("#timercontainer").text(counter)
+  //     counter--;
+  // }, 1000);
+  //   console.log(randomobject.text)
+  
+  $("body").on("keydown", (event) => {
+  const keyboard = event.key.toUpperCase()
+  console.log(keyboard)
+  })
+    //onclick button
   $(".buttongang").on("click", (event) => {
     const target = event.currentTarget; //targeting the button
     const buttontext = $(target).text(); //getting the text of that button
@@ -377,12 +399,13 @@ const main = () => {
       $("#hangman").attr("src", pictures[hangmanscore - 1]); //hangman will appear part by part
     }
     $(target).attr("disabled", true); //buttons that are clicked, can't be clicked again
-    if (hangmanscore === pictures.length) {
-      //lose function,
+    if (hangmanscore === pictures.length) {//lose function
       $("#livescontainer").text("HE'S DEAD YOU DODO"); // live text changes
       $(".buttongang").attr("disabled", true); //turning off ALL buttons
       const lose = new Audio("sound/nani.mp3")
       lose.play();
+      // clearInterval(interval); turn this on for numerical timer
+      $(".color").css("animation","cool 0s")
     }
     const check = $(".guessletters").text().includes("_"); //win condition
     if (check === false) {
@@ -398,6 +421,7 @@ const main = () => {
         }, 5000);
     }, 0);
       $(".buttongang").attr("disabled", true); //turning off All buttons
+      //clearInterval(interval); turn this on for numerical timer
     }
   });
   $("#restartcontainer").append(
@@ -408,6 +432,7 @@ const main = () => {
     $(start);
     hangmanscore = 0; //reset hangman score
     choice = 0
+    //clearInterval(interval); turn this on for numerical timer
   });
   $("#restartcontainer").append(
     $("<button>").attr("id", "restartbutton").text("Hang Again").addClass("custom-btn")
@@ -415,17 +440,8 @@ const main = () => {
   $("#restartbutton").on("click", () => {
     $("body").empty(); //clearing the body
     hangmanscore = 0; //reset hangman score
+    //clearInterval(interval); turn this on for numerical timer
     $(main);
   });
-let counter = 31;
-const interval = setInterval(() => {
-    counter--;
-    $("#timercontainer").append(counter)// Display 'counter' wherever you want to display it.
-    if (counter === 0) {
-        alert("counter")
-        clearInterval(interval);
-    }
-}, counter*100);
-  console.log(randomobject.text)
 };
 $(start);

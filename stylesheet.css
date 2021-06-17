@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
 body {
-  max-width: 1000px;
-  background-color: #41b3a3;
-
-  /* background: rgb(58, 56, 56); */
+    /* max-width: 1000px; */
+    background-color: #41b3a3;
+    align-items: center;
+    justify-content: center;
+    
+    
+    /* background: rgb(58, 56, 56); */
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #starttextdiv{
@@ -81,7 +89,7 @@ body {
      border-left-color: transparent;
      border-bottom-color: #000;
      border-right-color: #000;
-     background-color: blue;
+     background-color: grey;
   }
   .custom-btn:hover:before,
   .custom-btn:hover:after {
@@ -89,76 +97,7 @@ body {
     height: 100%;
     width: 100%;
   }
-  
-/* #startbuttondiv{
-    background: rgb(58, 56, 56);
-}
-#startbutton {
-  text-decoration: none;
-  border: 3px solid yellow;
-  color: transparent;
-  padding: 20px 60px;
-  font-size: 28px;
-  font-family: sans-serif;
-  letter-spacing: 5px;
-  transition: all 0.5s;
-  position: relative;
-}
-#startbutton:before {
-  content: "Go!";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: yellow;
-  background: rgb(34, 34, 34);
-  font-size: 28px;
-  top: 0;
-  left: 100%;
-  font-family: sans-serif;
-  letter-spacing: 5px;
-  transition: all 1s;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform: scale(0) rotatey(0);
-  opacity: 0;
-}
-#startbutton:hover:before {
-  transform: scale(1) rotatey(360deg);
-  left: 0;
-  opacity: 1;
-  
-}
-#startbutton:after {
-  content: "Let's Hang!";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: yellow;
-  background: rgb(34, 34, 34);
-  font-size: 28px;
-  top: 0;
-  left: 0;
-  font-family: sans-serif;
-  letter-spacing: 5px;
-  transition: all 1s;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform: scale(1) rotatey(0);
-  opacity: 1;
-}
-#startbutton:hover:after {
-  transform: scale(0) rotatey(360deg);
-  left: -100%;
-  opacity: 0;
-} */
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 #hangman {
   height: 300px;
 }
@@ -238,6 +177,43 @@ body {
   color: red;
   font-weight: bold;
 }
+#progressbarcontainer{
+margin: 10px;
+}
+.progress{
+    /* position: relative; */
+    /* display: block; */
+    height: 10px;
+    width: 300px;
+    border: 10px solid #f4a261;
+    border-radius: 15px;
+}
+.color{
+    /* position: absolute; */
+    /* display: block; */
+    background-color: #ffffff;
+    width: 0px;
+    height: 10px;
+    border-radius: 15px;
+    animation: cool 60s ;
+}
+@keyframes cool{
+    100%{
+        width: 0%;
+  }
+    75%{
+        width: 25%;
+    }
+    50%{
+        width: 50%;
+    }
+    25%{
+        width: 75%;
+    }
+    0%{
+      width: 100%;
+    }
+};
 /* .buttongang{
     margin:auto;
 } */
