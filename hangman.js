@@ -256,6 +256,9 @@ const main = () => {
     $("<div>").attr("class", "container").attr("id", "livescontainer")
   );
   body.append(
+    $("<div>").attr("class", "container").attr("id", "healthbarcontainer")
+  );
+  body.append(
     $("<div>").attr("class", "container").attr("id", "progressbarcontainer")
   );
   // body.append(
@@ -316,8 +319,15 @@ const main = () => {
   );
 
   //Timer CSS
+  $("#progressbarcontainer").append($("<div>").text("⌛"))
   $("#progressbarcontainer").append($("<div>").addClass("progress"));
   $(".progress").append($("<div>").addClass("color"));
+
+  //Timer CSS
+  $("#healthbarcontainer").append($("<div>").text("❤️"))
+  $("#healthbarcontainer").append($("<div>").addClass("health"));
+  $(".health").append($("<div>").addClass("color2"))
+  $(".color2").css("width", "100%");
 
   //putting the buttons into the container
   for (i = 0; i < alphabets.length; i++) {
@@ -409,9 +419,12 @@ const themaingame = () =>{
     } else {
       hangmanscore += 1; //hangman score goes up by 1
       $("#livescontainer").text(
-        "lmao trash - " + (pictures.length - hangmanscore) + " more lives to go!"); //live texts change
+        "lmao trash ~ " + (pictures.length - hangmanscore) + " more lives to go!"); //live texts change
       $("#hangman").attr("src", pictures[hangmanscore - 1]);//hangman will appear part by part
-      $(`#button${keystore}`).attr("disabled", true) ; //buttons that are clicked, can't be clicked again
+      $(`#button${keystore}`).attr("disabled", true) ; //buttons that are clicked, can't be clicked againz 
+      const healthcalc = (Math.floor((100/pictures.length)*(pictures.length-hangmanscore))).toString() + "%"
+      console.log(healthcalc)
+      $(".color2").css("width", healthcalc);
     }
     
     if (hangmanscore === pictures.length) {
@@ -444,7 +457,13 @@ const themaingame = () =>{
     $(".buttongang").attr("disabled", true); //turning off ALL buttons
     $("body").off("keypress")
     const lose = new Audio("sound/nani.mp3");
-    lose.play();
+    setTimeout(() => {
+      lose.play();
+      setTimeout(() => {
+        lose.pause();
+        lose.currentTime = 0;
+      }, 4200);
+    }, 0);
     $(".color").css("animation", "cool 0s");
     $("#hangman").attr("src", pictures[pictures.length-1])
     clearTimeout(realtimer)

@@ -4,9 +4,6 @@ body {
     background-color: #41b3a3;
     align-items: center;
     justify-content: center;
-    
-    
-    /* background: rgb(58, 56, 56); */
 }
 .container {
   display: flex;
@@ -214,6 +211,27 @@ margin: 10px;
       width: 100%;
     }
 };
+#healthbarcontainer{
+    margin: 10px;
+    }
+    .health{
+        /* position: relative; */
+        /* display: block; */
+        height: 10px;
+        width: 300px;
+        border: 10px solid #f4a261;
+        border-radius: 15px;
+    }
+    .color2{
+        /* position: absolute; */
+        /* display: block; */
+        background-color: #ffffff;
+        width: 0px;
+        height: 10px;
+        border-radius: 15px;
+        transition: width 1s;
+        content: "\01F354"
+    }
 /* .buttongang{
     margin:auto;
 } */
