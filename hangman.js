@@ -72,7 +72,7 @@ let choice = 0;
 const start = () => {
   const body = $("body");
   body.append(
-    $("<div>").attr("class", "container").attr("id", "starttextdiv").text("Hey")
+    $("<div>").attr("class", "container").attr("id", "starttextdiv").text("Hey.")
   );
   body.append(
     $("<div>").attr("class", "container").attr("id", "startbuttondiv")
@@ -98,56 +98,59 @@ const categorypage = () => {
       .text("Choose your poison")
   );
   body.append($("<div>").attr("class", "container").attr("id", "choicesdiv"));
-  $("#choicesdiv").append(
+  body.append($("<div>").attr("class", "special"));
+  $(".special").append($("<div>").attr("class", "container").attr("class", "multi-button"));
+  $(".multi-button").append(
     $("<button>")
-      .attr("id", "allwordsbutton")
+      .addClass("button-try")
       .text("All words")
-      .addClass("custom-btn")
+      .attr("id", "allwordsbutton")
   );
+  $(".multi-button").append(
+    $("<button>")
+      .addClass("button-try")
+      .text("Countries")
+      .attr("id", "countrybutton")
+  );
+  $(".multi-button").append(
+    $("<button>")
+      .addClass("button-try")
+      .text("Famous People")
+      .attr("id", "peoplebutton")
+  );
+  $(".multi-button").append(
+    $("<button>")
+      .addClass("button-try")
+      .text("Alcohol")
+      .attr("id", "alcoholbutton")
+  );
+  $(".multi-button").append(
+    $("<button>")
+      .addClass("button-try")
+      .text("User Added")
+      .attr("id", "useraddedbutton")
+  );
+  
   $("#allwordsbutton").on("click", () => {
     $("body").empty();
     $(main);
     choice = allwords;
   });
-  $("#choicesdiv").append(
-    $("<button>")
-      .attr("id", "countrybutton")
-      .text("Countries")
-      .addClass("custom-btn")
-  );
   $("#countrybutton").on("click", () => {
     $("body").empty();
     $(main);
     choice = country;
   });
-  $("#choicesdiv").append(
-    $("<button>")
-      .attr("id", "peoplebutton")
-      .text("Famous People")
-      .addClass("custom-btn")
-  );
   $("#peoplebutton").on("click", () => {
     $("body").empty();
     $(main);
     choice = famousPeople;
   });
-  $("#choicesdiv").append(
-    $("<button>")
-      .attr("id", "alcoholbutton")
-      .text("Alcohol")
-      .addClass("custom-btn")
-  );
   $("#alcoholbutton").on("click", () => {
     $("body").empty();
     $(main);
     choice = alcohol;
   });
-  $("#choicesdiv").append(
-    $("<button>")
-      .attr("id", "useraddedbutton")
-      .text("User Added")
-      .addClass("custom-btn")
-  );
   $("#useraddedbutton").on("click", () => {
     if (useradded.length <= 0) {
       $("#useraddedsuccessfully").empty();
@@ -445,7 +448,8 @@ const themaingame = () =>{
       }, 0);
       $(".buttongang").attr("disabled", true); //turning off All buttons
       $("body").off("keypress")
-      //clearInterval(interval); turn this on for numerical timer
+      clearTimeout(realtimer)
+      $(".color").css("animation", "cool 0s");
     }
   };
   const realtimer = setTimeout(() => {
