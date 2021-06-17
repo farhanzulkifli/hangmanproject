@@ -454,7 +454,7 @@ const themaingame = () =>{
   };
   const realtimer = setTimeout(() => {
     losefunction()
-  }, 10000);
+  }, 30000);
 
   const losefunction =() =>{//lose function
     $("#livescontainer").text("HE'S DEAD YOU DODO"); // live text changes
@@ -469,6 +469,7 @@ const themaingame = () =>{
       }, 4200);
     }, 0);
     $(".color").css("animation", "cool 0s");
+    $(".color2").css("width", "0");
     $("#hangman").attr("src", pictures[pictures.length-1])
     clearTimeout(realtimer)
     }
