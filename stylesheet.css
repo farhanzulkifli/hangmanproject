@@ -195,7 +195,7 @@ margin: 10px;
     width: 0px;
     height: 10px;
     border-radius: 15px;
-    animation: cool 60s ;
+    animation: cool 10s linear;
 }
 @keyframes cool{
     100%{

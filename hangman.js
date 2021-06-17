@@ -66,29 +66,29 @@ const alphabets = [
 ];
 //Game Score
 let hangmanscore = 0;
-let choice = 0
+let choice = 0;
 
 //Start Page
 const start = () => {
   const body = $("body");
   body.append(
-    $("<div>")
-      .attr("class", "container")
-      .attr("id", "starttextdiv")
-      .text("Hey")
+    $("<div>").attr("class", "container").attr("id", "starttextdiv").text("Hey")
   );
   body.append(
     $("<div>").attr("class", "container").attr("id", "startbuttondiv")
   );
   $("#startbuttondiv").append(
-    $("<button>").attr("id", "startbutton").text("Let's Hang").addClass("custom-btn")
+    $("<button>")
+      .attr("id", "startbutton")
+      .text("Let's Hang")
+      .addClass("custom-btn")
   );
   $("#startbutton").on("click", () => {
     $("body").empty();
     $(categorypage);
   });
 };
- // 2nd page
+// 2nd page
 const categorypage = () => {
   const body = $("body");
   body.append(
@@ -97,53 +97,67 @@ const categorypage = () => {
       .attr("id", "choosecatdiv")
       .text("Choose your poison")
   );
-  body.append(
-    $("<div>").attr("class", "container").attr("id", "choicesdiv")
-  );
+  body.append($("<div>").attr("class", "container").attr("id", "choicesdiv"));
   $("#choicesdiv").append(
-    $("<button>").attr("id", "allwordsbutton").text("All words").addClass("custom-btn")
+    $("<button>")
+      .attr("id", "allwordsbutton")
+      .text("All words")
+      .addClass("custom-btn")
   );
   $("#allwordsbutton").on("click", () => {
     $("body").empty();
     $(main);
-    choice = allwords
+    choice = allwords;
   });
   $("#choicesdiv").append(
-    $("<button>").attr("id", "countrybutton").text("Countries").addClass("custom-btn")
+    $("<button>")
+      .attr("id", "countrybutton")
+      .text("Countries")
+      .addClass("custom-btn")
   );
   $("#countrybutton").on("click", () => {
     $("body").empty();
     $(main);
-    choice = country
+    choice = country;
   });
   $("#choicesdiv").append(
-    $("<button>").attr("id", "peoplebutton").text("Famous People").addClass("custom-btn")
+    $("<button>")
+      .attr("id", "peoplebutton")
+      .text("Famous People")
+      .addClass("custom-btn")
   );
   $("#peoplebutton").on("click", () => {
     $("body").empty();
     $(main);
-    choice = famousPeople
+    choice = famousPeople;
   });
   $("#choicesdiv").append(
-    $("<button>").attr("id", "alcoholbutton").text("Alcohol").addClass("custom-btn")
+    $("<button>")
+      .attr("id", "alcoholbutton")
+      .text("Alcohol")
+      .addClass("custom-btn")
   );
   $("#alcoholbutton").on("click", () => {
     $("body").empty();
     $(main);
-    choice = alcohol
+    choice = alcohol;
   });
   $("#choicesdiv").append(
-    $("<button>").attr("id", "useraddedbutton").text("User Added").addClass("custom-btn")
+    $("<button>")
+      .attr("id", "useraddedbutton")
+      .text("User Added")
+      .addClass("custom-btn")
   );
   $("#useraddedbutton").on("click", () => {
-    if (useradded.length <= 0){
-    $("#useraddedsuccessfully").empty()
-    $("#useraddedsuccessfully").text("You swine! The 'User Added' library is empty, add something. ")
-    }
-    else{
-    $("body").empty();
-    $(main);
-    choice = useradded
+    if (useradded.length <= 0) {
+      $("#useraddedsuccessfully").empty();
+      $("#useraddedsuccessfully").text(
+        "You swine! The 'User Added' library is empty, add something. "
+      );
+    } else {
+      $("body").empty();
+      $(main);
+      choice = useradded;
     }
   });
   body.append(
@@ -158,11 +172,7 @@ const categorypage = () => {
       .attr("id", "addstuffdiv2")
       .text("(stuff here will be added to 'User Added' Category)")
   );
-  body.append(
-    $("<div>")
-      .attr("class", "container")
-      .attr("id", "submitstuff")
-  );
+  body.append($("<div>").attr("class", "container").attr("id", "submitstuff"));
   $("#submitstuff").append(
     $("<input>")
       .attr("class", "container")
@@ -186,43 +196,45 @@ const categorypage = () => {
   );
   $("#submitstuff").append(
     $("<input/>")
-      .attr("type", 'submit')
-      .attr("id",'submitbutton')
-      .text('Hang!')
+      .attr("type", "submit")
+      .attr("id", "submitbutton")
+      .text("Hang!")
   );
   body.append(
-    $("<div>")
-      .attr("class", "container")
-      .attr("id", "useraddedsuccessfully")
+    $("<div>").attr("class", "container").attr("id", "useraddedsuccessfully")
   );
 
   $("#submitbutton").on("click", () => {
-
     class Build {
-      constructor(text,category,hint){
-          this.text = text
-          this.category = category
-          this.hint = hint
+      constructor(text, category, hint) {
+        this.text = text;
+        this.category = category;
+        this.hint = hint;
       }
     }
-  const maker = new Build($("#textinput1").val(),$("#textinput2").val(),$("#textinput3").val())
-  
-  if ($("#textinput1").val() !== ""){
-    useradded.push(maker)
-    $("#useraddedsuccessfully").empty()
-    $("#useraddedsuccessfully").text("Hang Successful!")
-    $(".inputbox").val(null)
-    const hangsuccess = new Audio("sound/nice.mp3")
-    hangsuccess.play();
-  }
-    else{
-      $("#useraddedsuccessfully").empty()
-      $("#useraddedsuccessfully").text("You're obviously a disappointment. Type something in the text box.")
-      const hangfail = new Audio("sound/allahuakbar.mp3")
+    const maker = new Build(
+      $("#textinput1").val(),
+      $("#textinput2").val(),
+      $("#textinput3").val()
+    );
+
+    if ($("#textinput1").val() !== "") {
+      useradded.push(maker);
+      $("#useraddedsuccessfully").empty();
+      $("#useraddedsuccessfully").text("Hang Successful!");
+      $(".inputbox").val(null);
+      const hangsuccess = new Audio("sound/nice.mp3");
+      hangsuccess.play();
+    } else {
+      $("#useraddedsuccessfully").empty();
+      $("#useraddedsuccessfully").text(
+        "You're obviously a disappointment. Type something in the text box."
+      );
+      const hangfail = new Audio("sound/allahuakbar.mp3");
       hangfail.play();
     }
-  })
-}
+  });
+};
 
 const main = () => {
   //Structuring the containers
@@ -304,8 +316,8 @@ const main = () => {
   );
 
   //Timer CSS
-  $("#progressbarcontainer").append($("<div>").addClass("progress"))
-  $(".progress").append($("<div>").addClass("color"))
+  $("#progressbarcontainer").append($("<div>").addClass("progress"));
+  $(".progress").append($("<div>").addClass("color"));
 
   //putting the buttons into the container
   for (i = 0; i < alphabets.length; i++) {
@@ -345,7 +357,7 @@ const main = () => {
     "meme/tattoo.jpg",
     "meme/toilet.jpg",
     "meme/watch.jpg",
-    "meme/xiaomi.jpg"
+    "meme/xiaomi.jpg",
   ];
 
   $("#hangmancontainer").append('<img id="hangman"/>');
@@ -376,72 +388,92 @@ const main = () => {
   //   $("#timercontainer").text(counter)
   //     counter--;
   // }, 1000);
-  //   console.log(randomobject.text)
-  
-  $("body").on("keydown", (event) => {
-  const keyboard = event.key.toUpperCase()
-  console.log(keyboard)
-  })
-    //onclick button
+
+  let keystore = 0;
+
+  $("body").on("keypress", (event) => {
+    keystore = event.key.toUpperCase();
+    themaingame();
+  });
   $(".buttongang").on("click", (event) => {
-    const target = event.currentTarget; //targeting the button
-    const buttontext = $(target).text(); //getting the text of that button
-    if ($(`.${buttontext}`).length > 0) {
+    const target = event.currentTarget;
+    keystore = $(target).text();
+    themaingame();
+  });
+
+const themaingame = () =>{
+    if ($(`.${keystore}`).length > 0) {
       //searching for the SAME CLASS of the TEXT of the button using interpolation eg. searching for class A when button text is A
-      $(`.${buttontext}`).text(buttontext); //if length is more than 0, which means the search is true, the text of that class will change (since its an _)
+      $(`.${keystore}`).text(keystore);
+      $(`#button${keystore}`).attr("disabled", true) //if length is more than 0, which means the search is true, the text of that class will change (since its an _)
     } else {
       hangmanscore += 1; //hangman score goes up by 1
       $("#livescontainer").text(
-        "YOU NOOB TRASH! " +
-          (pictures.length - hangmanscore) +
-          " more lives to go!"
-      ); //live texts change
-      $("#hangman").attr("src", pictures[hangmanscore - 1]); //hangman will appear part by part
+        "lmao trash - " + (pictures.length - hangmanscore) + " more lives to go!"); //live texts change
+      $("#hangman").attr("src", pictures[hangmanscore - 1]);//hangman will appear part by part
+      $(`#button${keystore}`).attr("disabled", true) ; //buttons that are clicked, can't be clicked again
     }
-    $(target).attr("disabled", true); //buttons that are clicked, can't be clicked again
-    if (hangmanscore === pictures.length) {//lose function
-      $("#livescontainer").text("HE'S DEAD YOU DODO"); // live text changes
-      $(".buttongang").attr("disabled", true); //turning off ALL buttons
-      const lose = new Audio("sound/nani.mp3")
-      lose.play();
-      // clearInterval(interval); turn this on for numerical timer
-      $(".color").css("animation","cool 0s")
+    
+    if (hangmanscore === pictures.length) {
+      losefunction()
     }
     const check = $(".guessletters").text().includes("_"); //win condition
     if (check === false) {
       $("#livescontainer").text("HE'S ALIIIVEEE");
       $("#hangmancontainer").append('<img id="winhangman"/>');
       $("#hangman").attr("src", meme[Math.floor(Math.random() * meme.length)]);
-      const victory = new Audio("sound/FF7victory.mp3")
+      const victory = new Audio("sound/FF7victory.mp3");
       setTimeout(() => {
         victory.play();
         setTimeout(() => {
-            victory.pause();
-            victory.currentTime = 0;
+          victory.pause();
+          victory.currentTime = 0;
         }, 5000);
-    }, 0);
+      }, 0);
       $(".buttongang").attr("disabled", true); //turning off All buttons
+      $("body").off("keypress")
       //clearInterval(interval); turn this on for numerical timer
     }
-  });
+  };
+  const realtimer = setTimeout(() => {
+    losefunction()
+  }, 10000);
+
+  const losefunction =() =>{//lose function
+    $("#livescontainer").text("HE'S DEAD YOU DODO"); // live text changes
+    $(".buttongang").attr("disabled", true); //turning off ALL buttons
+    $("body").off("keypress")
+    const lose = new Audio("sound/nani.mp3");
+    lose.play();
+    $(".color").css("animation", "cool 0s");
+    $("#hangman").attr("src", pictures[pictures.length-1])
+    clearTimeout(realtimer)
+    }
+  
   $("#restartcontainer").append(
-    $("<button>").attr("id", "mainmenu").text("Main Menu").addClass("custom-btn")
+    $("<button>")
+      .attr("id", "mainmenu")
+      .text("Main Menu")
+      .addClass("custom-btn")
   );
   $("#mainmenu").on("click", () => {
     $("body").empty(); //clearing the body
     $(start);
     hangmanscore = 0; //reset hangman score
-    choice = 0
-    //clearInterval(interval); turn this on for numerical timer
+    choice = 0;
+    clearTimeout(realtimer)
   });
   $("#restartcontainer").append(
-    $("<button>").attr("id", "restartbutton").text("Hang Again").addClass("custom-btn")
+    $("<button>")
+      .attr("id", "restartbutton")
+      .text("Hang Again")
+      .addClass("custom-btn")
   ); //making the reset button
   $("#restartbutton").on("click", () => {
     $("body").empty(); //clearing the body
-    hangmanscore = 0; //reset hangman score
-    //clearInterval(interval); turn this on for numerical timer
     $(main);
+    hangmanscore = 0;//reset hangman score
+    clearTimeout(realtimer) 
   });
 };
 $(start);
