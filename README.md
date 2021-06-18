@@ -1,1 +1,1 @@
-![alt text]( https://github.com/farhanzulkifli/hangmanproject/picsforread/Capture.png? raw=true)
+![alt text]( https://github.com/farhanzulkifli/hangmanproject/blob/master/picsforread/Capture.PNG? raw=true)
