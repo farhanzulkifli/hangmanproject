@@ -6,14 +6,19 @@ const country = [
 ];
 const famousPeople = [
   {
+    text: "Your mother",
+    category: "Famous People",
+    hint: "Cane You",
+  },
+  {
     text: "Hermione Granger",
     category: "Famous People",
     hint: "Wingardium Levi'O'sa",
   },
   {
-    text: "Roger Federer",
+    text: "Sean",
     category: "Famous People",
-    hint: "Possibly the best tennis player of all time",
+    hint: "God Tier Top Shelf Shit",
   },
   {
     text: "David Liew",
@@ -188,7 +193,7 @@ const categorypage = () => {
       .attr("class", "container")
       .attr("class", "inputbox")
       .attr("id", "textinput2")
-      .attr("placeholder", "your category ma bro")
+      .attr("placeholder", "your category babi")
   );
   $("#submitstuff").append(
     $("<input>")
@@ -386,7 +391,7 @@ const main = () => {
 
   //putting the lives text
   $("#livescontainer").append(
-    "WE OK BOISSSS." +
+    "mi pan zu zu zu." +
       " " +
       (pictures.length - hangmanscore) +
       " more lives to go!"
@@ -428,6 +433,8 @@ const themaingame = () =>{
       const healthcalc = (Math.floor((100/pictures.length)*(pictures.length-hangmanscore))).toString() + "%"
       console.log(healthcalc)
       $(".color2").css("width", healthcalc);
+      const oof = new Audio("buttonsound/oof.mp3");
+      oof.play()
     }
     
     if (hangmanscore === pictures.length) {
@@ -457,7 +464,7 @@ const themaingame = () =>{
   }, 30000);
 
   const losefunction =() =>{//lose function
-    $("#livescontainer").text("HE'S DEAD YOU DODO"); // live text changes
+    $("#livescontainer").text("funeral bro"); // live text changes
     $(".buttongang").attr("disabled", true); //turning off ALL buttons
     $("body").off("keypress")
     const lose = new Audio("sound/nani.mp3");
