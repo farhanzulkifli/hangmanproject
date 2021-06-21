@@ -5,25 +5,21 @@ const country = [
   { text: "Ghana", category: "Country", hint: "Africa" },
 ];
 const famousPeople = [
-  {
-    text: "Your mother",
-    category: "Famous People",
-    hint: "Cane You",
-  },
+
   {
     text: "Hermione Granger",
     category: "Famous People",
     hint: "Wingardium Levi'O'sa",
   },
   {
-    text: "Sean",
+    text: "David Beckham",
     category: "Famous People",
-    hint: "God Tier Top Shelf Shit",
+    hint: "Ex-Footballer",
   },
   {
-    text: "David Liew",
+    text: "Barrack Obama",
     category: "Famous People",
-    hint: "Most handsome man in class",
+    hint: "Ex-POTUS",
   },
 ];
 const alcohol = [
@@ -160,7 +156,7 @@ const categorypage = () => {
     if (useradded.length <= 0) {
       $("#useraddedsuccessfully").empty();
       $("#useraddedsuccessfully").text(
-        "You swine! The 'User Added' library is empty, add something. "
+        "The 'User Added' library is empty, add something. "
       );
     } else {
       $("body").empty();
@@ -186,21 +182,21 @@ const categorypage = () => {
       .attr("class", "container")
       .attr("class", "inputbox")
       .attr("id", "textinput1")
-      .attr("placeholder", "your text little hoe")
+      .attr("placeholder", "your text")
   );
   $("#submitstuff").append(
     $("<input>")
       .attr("class", "container")
       .attr("class", "inputbox")
       .attr("id", "textinput2")
-      .attr("placeholder", "your category babi")
+      .attr("placeholder", "your category")
   );
   $("#submitstuff").append(
     $("<input>")
       .attr("class", "container")
       .attr("class", "inputbox")
       .attr("id", "textinput3")
-      .attr("placeholder", "your hint you sick troll")
+      .attr("placeholder", "your hint")
   );
   $("#submitstuff").append(
     $("<input/>")
@@ -236,10 +232,8 @@ const categorypage = () => {
     } else {
       $("#useraddedsuccessfully").empty();
       $("#useraddedsuccessfully").text(
-        "You're obviously a disappointment. Type something in the text box."
+        "Type something in the text box."
       );
-      const hangfail = new Audio("sound/allahuakbar.mp3");
-      hangfail.play();
     }
   });
 };
@@ -427,7 +421,7 @@ const themaingame = () =>{
     } else {
       hangmanscore += 1; //hangman score goes up by 1
       $("#livescontainer").text(
-        "lmao trash ~ " + (pictures.length - hangmanscore) + " more lives to go!"); //live texts change
+        "ohno ~ " + (pictures.length - hangmanscore) + " more lives to go!"); //live texts change
       $("#hangman").attr("src", pictures[hangmanscore - 1]);//hangman will appear part by part
       $(`#button${keystore}`).attr("disabled", true) ; //buttons that are clicked, can't be clicked againz 
       const healthcalc = (Math.floor((100/pictures.length)*(pictures.length-hangmanscore))).toString() + "%"
