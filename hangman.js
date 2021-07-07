@@ -22,21 +22,21 @@ const famousPeople = [
     hint: "Ex-POTUS",
   },
 ];
-const alcohol = [
+const foodanddrinks = [
   {
-    text: "Soju Bomb",
-    category: "Alcohol",
-    hint: "You think it's a sweet drink... And then it hits you like a bloody train.",
+    text: "Fish and Chips",
+    category: "Food",
+    hint: "English, very english",
   },
   { text: "Vesper Martini", category: "Alcohol", hint: "Double OO7" },
   {
-    text: "Sangria",
-    category: "Alcohol",
-    hint: "Spanish/Portuguese delight, lots of fruits",
+    text: "Double Mcspicy",
+    category: "Fast Food",
+    hint: "Amazing flavour but sends you to the bathroom.",
   },
 ];
 const useradded = [];
-const allwords = useradded.concat(alcohol, famousPeople, country);
+const allwords = useradded.concat(foodanddrinks, famousPeople, country);
 const alphabets = [
   "A",
   "B",
@@ -122,8 +122,8 @@ const categorypage = () => {
   $(".multi-button").append(
     $("<button>")
       .addClass("button-try")
-      .text("Alcohol")
-      .attr("id", "alcoholbutton")
+      .text("Food and Drinks")
+      .attr("id", "foodbutton")
   );
   $(".multi-button").append(
     $("<button>")
@@ -147,10 +147,10 @@ const categorypage = () => {
     $(main);
     choice = famousPeople;
   });
-  $("#alcoholbutton").on("click", () => {
+  $("#foodbutton").on("click", () => {
     $("body").empty();
     $(main);
-    choice = alcohol;
+    choice = foodanddrinks;
   });
   $("#useraddedbutton").on("click", () => {
     if (useradded.length <= 0) {
